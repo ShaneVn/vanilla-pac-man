@@ -64,3 +64,8 @@ html, body {
     background-color:aqua;
     border: none;
 }
+
+button[disabled]{
+    background-color: #666666;
+    cursor: not-allowed;
+}

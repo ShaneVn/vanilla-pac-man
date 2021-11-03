@@ -3,6 +3,7 @@ const scoreDisplay = document.getElementById("score");
 const msgBoard = document.getElementById("msg-board");
 const width = 28;
 const resetGame =document.getElementById('reset')
+const startGameButton = document.getElementById('start')
 let squares = [];
 let score = 0;
 let pacDot = 234;
@@ -148,7 +149,7 @@ function control(e) {
   pacDotEaten();
   powerPelletEaten();
 }
-document.addEventListener("keyup", control);
+
 
 function pacDotEaten() {
   if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
@@ -206,7 +207,15 @@ ghosts.forEach((ghost) => {
 });
 
 //move the ghosts
-ghosts.forEach((ghost) => moveGhost(ghost));
+
+const startGame = ()=>{
+  ghosts.forEach((ghost) => moveGhost(ghost));
+  document.addEventListener("keyup", control)
+  startGameButton.disabled = true
+}
+
+
+startGameButton.addEventListener('click', startGame)
 
 function moveGhost(ghost) {
   console.log("moved ghost");
